@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Natalino Munari | Développeur Full-Stack</title>
+    <title>Natalino Munari | Étudiant à 42 Lausanne</title>
     <meta name="description"
         content="Portfolio de Natalino Munari, étudiant à 42 Lausanne à la recherche d'un stage informatique dans le canton de Fribourg.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -17,7 +18,15 @@
 <body>
     <header class="site-header">
         <nav class="nav" aria-label="Navigation principale">
-            <a class="nav__logo" href="#hero">nm<span class="nav__logo-cursor">_</span></a>
+            <a class="nav__logo" href="#hero">
+                <svg class="logo42" viewBox="0 0 21.375 15" aria-hidden="true">
+                    <path
+                        d="M11.813 0H7.874L0 7.875v3.188h7.875V15h3.938V7.875H3.936L11.814 0zM13.5 3.938L17.438 0H13.5v3.938z" />
+                    <path d="M21.375 3.938V0h-3.938v3.938L13.5 7.874v3.938h3.938V7.874l3.937-3.938z" />
+                    <path d="M21.375 7.875l-3.938 3.938h3.938V7.874z" />
+                </svg>
+                nmunari<span class="nav__logo-cursor">_</span>
+            </a>
 
             <button class="nav__burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false"
                 aria-controls="nav-links">
@@ -39,14 +48,15 @@
 
     <main>
         <section id="hero" class="hero">
-            <img class="hero__avatar" src="assets/img/avatar.jpg" alt="Photo de Natalino Munari">
-            <!-- TODO: remplacer assets/img/avatar.jpg par la vraie photo -->
+            <div class="hero__avatar">
+                <img src="assets/img/nmunari.jpg" alt="Photo de Natalino Munari">
+            </div>
 
             <div class="hero__terminal">
                 <p>$ whoami</p>
                 <p>&gt; Natalino Munari</p>
                 <p>$ role</p>
-                <p>&gt; Développeur Full-Stack | Étudiant à 42 Lausanne</p>
+                <p>&gt; Étudiant à 42 Lausanne</p>
                 <p>$ status</p>
                 <p>&gt; Disponible pour un stage dès fin septembre 2026</p>
                 <p>$ location</p>
@@ -62,8 +72,13 @@
         <section id="about" class="about">
             <h2>À propos</h2>
             <p>
-                <!-- TODO: bio réelle (parcours avant 42, motivation, ce que je cherche dans un stage) -->
-                Texte à compléter.
+                Après une maturité gymnasiale au Collège de Gambach, je suis passé par
+                l'EPFL puis la Haute École d'Ingénierie et d'Architecture de Fribourg, deux pistes qui ne m'ont
+                finalement pas convenu. J'ai atterri à 42 Lausanne pour son format en autonomie, qui me permet
+                d'étudier tout en travaillant. En parallèle depuis 2016, j'ai enchaîné plusieurs emplois en
+                restauration et en logistique, de quoi apprendre la rigueur et la gestion du stress avant même de
+                coder. Aujourd'hui je cherche un stage pour transformer cette base en vrai métier de
+                développeur.
             </p>
         </section>
 
@@ -73,19 +88,50 @@
                 <li class="timeline__item">
                     <h3 class="timeline__title">Formation avant 42</h3>
                     <p class="timeline__text">
-                        <!-- TODO: écoles suivies + années -->
-                        Texte à compléter.
+                        2017-2021 : maturité gymnasiale au Collège de Gambach (Fribourg), option renforcée
+                        mathématiques, option spécifique physique et application des maths, option complémentaire
+                        informatique. Puis un
+                        passage par l'EPFL et par la Haute École d'Ingénierie et d'Architecture de Fribourg
+                        (HEIA-FR), avant de rejoindre 42 Lausanne.
                     </p>
                 </li>
                 <li class="timeline__item">
                     <h3 class="timeline__title">Expérience professionnelle</h3>
-                    <p class="timeline__text">
-                        <!-- TODO: postes occupés + entreprises + années -->
-                        Texte à compléter.
-                    </p>
+                    <div class="job-list">
+                        <article class="job">
+                            <h4 class="job__title">Chauffeur-livreur <span class="job__meta">Poste CH SA, Givisiez
+                                    · 2024</span></h4>
+                            <ul class="job__tasks">
+                                <li>Livraison de colis et courses alimentaires</li>
+                                <li>Distribution des actes de poursuites</li>
+                            </ul>
+                        </article>
+                        <article class="job">
+                            <h4 class="job__title">Équipier <span class="job__meta">McDonald's, Avry-sur-Matran ·
+                                    2021-2023</span></h4>
+                            <ul class="job__tasks">
+                                <li>Service à table, accueil et échange avec les hôtes</li>
+                                <li>Préparation des produits à tous les postes selon les normes de qualité et
+                                    d'hygiène</li>
+                                <li>Organisation des stocks en cuisine</li>
+                            </ul>
+                        </article>
+                        <article class="job">
+                            <h4 class="job__title">Aide cuisine &amp; serveur <span class="job__meta">L'Unique, La
+                                    Roche · depuis 2016</span></h4>
+                            <ul class="job__tasks">
+                                <li>Mise en place garde-manger et desserts</li>
+                                <li>Commis durant le service, inventaire, prise de commande</li>
+                                <li>Service et préparation de tartare à la table</li>
+                            </ul>
+                        </article>
+                    </div>
                 </li>
                 <li class="timeline__item">
-                    <h3 class="timeline__title">42 Lausanne</h3>
+                    <h3 class="timeline__title">
+                        <a href="https://42lausanne.ch/fr" target="_blank" rel="noopener noreferrer">42
+                            Lausanne</a>
+                    </h3>
                     <p class="timeline__text">
                         Piscine, puis tronc commun. Sur le point d'attaquer le projet final
                         <strong>Transcendance</strong>, dernière étape avant la fin du cursus.
@@ -105,12 +151,20 @@
             <h2>Compétences</h2>
 
             <div class="skills__group">
-                <h3 class="skills__group-title">Langages</h3>
+                <h3 class="skills__group-title">Langages de programmation</h3>
                 <ul class="tag-list">
                     <li class="tag">C</li>
                     <li class="tag">C++</li>
                     <li class="tag">Java</li>
                     <!-- TODO: compléter/vérifier la liste réelle -->
+                </ul>
+            </div>
+
+            <div class="skills__group">
+                <h3 class="skills__group-title">Langues parlées</h3>
+                <ul class="tag-list">
+                    <li class="tag">Français (natif)</li>
+                    <li class="tag">Anglais (B2)</li>
                 </ul>
             </div>
 
@@ -198,8 +252,8 @@
                         <li class="tag">Multithreading</li>
                         <li class="tag">Synchronisation</li>
                     </ul>
-                    <a class="project-card__link" href="https://github.com/natamun/42-philosophers"
-                        target="_blank" rel="noopener noreferrer">Voir le code →</a>
+                    <a class="project-card__link" href="https://github.com/natamun/42-philosophers" target="_blank"
+                        rel="noopener noreferrer">Voir le code →</a>
                 </article>
 
                 <article class="project-card">
@@ -240,8 +294,8 @@
                         Projet final du tronc commun à 42 Lausanne, en équipe. Démarrage imminent. Cette carte
                         sera mise à jour une fois le projet lancé.
                     </p>
-                    <a class="project-card__link" href="https://github.com/natamun/42-ft_transcendence"
-                        target="_blank" rel="noopener noreferrer">Voir le repo →</a>
+                    <a class="project-card__link" href="https://github.com/natamun/42-ft_transcendence" target="_blank"
+                        rel="noopener noreferrer">Voir le repo →</a>
                 </article>
             </div>
         </section>
@@ -299,8 +353,8 @@
     </main>
 
     <footer class="site-footer">
-        <p>Natalino Munari · <a href="https://github.com/natamun/myCvWeb" target="_blank"
-                rel="noopener noreferrer">code source</a></p>
+        <p>Natalino Munari · <a href="https://github.com/natamun/myCvWeb" target="_blank" rel="noopener noreferrer">code
+                source</a></p>
     </footer>
 
     <script src="assets/js/main.js" defer></script>
