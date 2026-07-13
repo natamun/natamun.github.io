@@ -613,16 +613,6 @@ section {
     flex-grow: 1;
 }
 
-.badge {
-    font-family: var(--font-mono);
-    font-size: var(--fs-sm);
-    font-weight: 500;
-    padding: 0.15rem var(--space-2);
-    border: 1px solid var(--accent-secondary);
-    border-radius: var(--radius-sm);
-    color: var(--accent-secondary);
-}
-
 .project-card__details {
     position: absolute;
     left: 0;
