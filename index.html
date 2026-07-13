@@ -3,14 +3,303 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Natalino MUNARI — Développeur</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natalino Munari | Développeur Full-Stack</title>
+    <meta name="description"
+        content="Portfolio de Natalino Munari, étudiant à 42 Lausanne à la recherche d'un stage informatique dans le canton de Fribourg.">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-    <h1>Natalino MUNARI</h1>
-    <p>Étudiant à 42 Lausanne — recherche un stage informatique (Fribourg/Bulle).</p>
-    <p> <a href="munnatalino@gmail.com">Email</a> · <a href="https://github.com/natamun">GitHub</a> · <a
-            href="https://www.linkedin.com/in/natalino-munari-3096502b7/">LinkedIn</a> </p>
+    <header class="site-header">
+        <nav class="nav" aria-label="Navigation principale">
+            <a class="nav__logo" href="#hero">nm<span class="nav__logo-cursor">_</span></a>
+
+            <button class="nav__burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false"
+                aria-controls="nav-links">
+                <span></span><span></span><span></span>
+            </button>
+
+            <ul class="nav__links" id="nav-links">
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#parcours">Parcours</a></li>
+                <li><a href="#skills">Compétences</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#stage-info">Stage 42</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <button class="nav__lang-toggle" type="button" aria-label="Changer de langue">FR / EN</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <img class="hero__avatar" src="assets/img/avatar.jpg" alt="Photo de Natalino Munari">
+            <!-- TODO: remplacer assets/img/avatar.jpg par la vraie photo -->
+
+            <div class="hero__terminal">
+                <p>$ whoami</p>
+                <p>&gt; Natalino Munari</p>
+                <p>$ role</p>
+                <p>&gt; Développeur Full-Stack | Étudiant à 42 Lausanne</p>
+                <p>$ status</p>
+                <p>&gt; Disponible pour un stage dès fin septembre 2026</p>
+                <p>$ location</p>
+                <p>&gt; Fribourg / Bulle, Suisse</p>
+            </div>
+
+            <div class="hero__cta">
+                <a class="btn btn--primary" href="#projects">Voir mes projets</a>
+                <a class="btn btn--secondary" href="#contact">Me contacter</a>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <h2>À propos</h2>
+            <p>
+                <!-- TODO: bio réelle (parcours avant 42, motivation, ce que je cherche dans un stage) -->
+                Texte à compléter.
+            </p>
+        </section>
+
+        <section id="parcours" class="parcours">
+            <h2>Parcours</h2>
+            <ol class="timeline">
+                <li class="timeline__item">
+                    <h3 class="timeline__title">Formation avant 42</h3>
+                    <p class="timeline__text">
+                        <!-- TODO: écoles suivies + années -->
+                        Texte à compléter.
+                    </p>
+                </li>
+                <li class="timeline__item">
+                    <h3 class="timeline__title">Expérience professionnelle</h3>
+                    <p class="timeline__text">
+                        <!-- TODO: postes occupés + entreprises + années -->
+                        Texte à compléter.
+                    </p>
+                </li>
+                <li class="timeline__item">
+                    <h3 class="timeline__title">42 Lausanne</h3>
+                    <p class="timeline__text">
+                        Piscine, puis tronc commun. Sur le point d'attaquer le projet final
+                        <strong>Transcendance</strong>, dernière étape avant la fin du cursus.
+                    </p>
+                </li>
+                <li class="timeline__item">
+                    <h3 class="timeline__title">Aujourd'hui</h3>
+                    <p class="timeline__text">
+                        Recherche d'un stage informatique dans le canton de Fribourg (Fribourg / Bulle),
+                        pour environ fin septembre 2026, dates flexibles.
+                    </p>
+                </li>
+            </ol>
+        </section>
+
+        <section id="skills" class="skills">
+            <h2>Compétences</h2>
+
+            <div class="skills__group">
+                <h3 class="skills__group-title">Langages</h3>
+                <ul class="tag-list">
+                    <li class="tag">C</li>
+                    <li class="tag">C++</li>
+                    <li class="tag">Java</li>
+                    <!-- TODO: compléter/vérifier la liste réelle -->
+                </ul>
+            </div>
+
+            <div class="skills__group">
+                <h3 class="skills__group-title">Web</h3>
+                <ul class="tag-list">
+                    <!-- TODO: stack web réelle utilisée pour Transcendance -->
+                </ul>
+            </div>
+
+            <div class="skills__group">
+                <h3 class="skills__group-title">Outils &amp; Systèmes</h3>
+                <ul class="tag-list">
+                    <li class="tag">Linux</li>
+                    <li class="tag">Git</li>
+                    <li class="tag">Docker</li>
+                    <li class="tag">Bash</li>
+                    <!-- TODO: compléter/vérifier la liste réelle -->
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <h2>Projets</h2>
+            <div class="projects__grid">
+                <article class="project-card">
+                    <h3 class="project-card__title">Serveur HTTP</h3>
+                    <p class="project-card__text">
+                        Serveur HTTP/1.0 non-bloquant développé en C++98 avec un binôme, en suivant un
+                        CONTRIBUTING.md strict (branches de fonctionnalités, commits conventionnels, revues de
+                        code obligatoires). Gestion du multiplexage de sockets (poll) et exécution CGI.
+                    </p>
+                    <ul class="tag-list">
+                        <li class="tag">C++</li>
+                        <li class="tag">Sockets</li>
+                        <li class="tag">Protocole HTTP</li>
+                        <li class="tag">Réseau</li>
+                    </ul>
+                    <a class="project-card__link" href="https://github.com/natamun/42-webserv" target="_blank"
+                        rel="noopener noreferrer">Voir le code →</a>
+                </article>
+
+                <article class="project-card">
+                    <h3 class="project-card__title">Infrastructure &amp; DevOps</h3>
+                    <p class="project-card__text">
+                        Mise en place d'une infrastructure complète avec Docker : images personnalisées pour
+                        Nginx, WordPress et MariaDB, orchestrées dans un réseau Docker dédié.
+                    </p>
+                    <ul class="tag-list">
+                        <li class="tag">Docker</li>
+                        <li class="tag">Docker Compose</li>
+                        <li class="tag">Linux</li>
+                        <li class="tag">Bash</li>
+                    </ul>
+                    <a class="project-card__link" href="https://github.com/natamun/42-inception" target="_blank"
+                        rel="noopener noreferrer">Voir le code →</a>
+                </article>
+
+                <article class="project-card">
+                    <h3 class="project-card__title">Shell UNIX</h3>
+                    <p class="project-card__text">
+                        Recréation d'un shell façon Bash à partir de zéro : lexer/parser maison (AST) gérant les
+                        processus enfants, pipes, redirections (&lt;, &lt;&lt;, &gt;, &gt;&gt;), opérateurs
+                        logiques (&amp;&amp;, ||), sous-shells et wildcards.
+                    </p>
+                    <ul class="tag-list">
+                        <li class="tag">C</li>
+                        <li class="tag">AST</li>
+                        <li class="tag">API POSIX</li>
+                        <li class="tag">Architecture système</li>
+                    </ul>
+                    <a class="project-card__link" href="https://github.com/natamun/42-minishell" target="_blank"
+                        rel="noopener noreferrer">Voir le code →</a>
+                </article>
+
+                <article class="project-card">
+                    <h3 class="project-card__title">Concurrence &amp; Threads</h3>
+                    <p class="project-card__text">
+                        Résolution du problème des philosophes autour d'une table (dining philosophers).
+                        Gestion de threads concurrents avec prévention des race conditions et des deadlocks via
+                        des mutex.
+                    </p>
+                    <ul class="tag-list">
+                        <li class="tag">C</li>
+                        <li class="tag">Multithreading</li>
+                        <li class="tag">Synchronisation</li>
+                    </ul>
+                    <a class="project-card__link" href="https://github.com/natamun/42-philosophers"
+                        target="_blank" rel="noopener noreferrer">Voir le code →</a>
+                </article>
+
+                <article class="project-card">
+                    <h3 class="project-card__title">Moteur de jeu Roguelike</h3>
+                    <p class="project-card__text">
+                        Dungeon crawler roguelike en Java sur un moteur de grille 2D : génération procédurale de
+                        niveaux, ennemis, armes, architecture orientée objet encapsulée.
+                    </p>
+                    <ul class="tag-list">
+                        <li class="tag">Java</li>
+                        <li class="tag">POO</li>
+                        <li class="tag">Moteur de jeu</li>
+                        <li class="tag">Génération procédurale</li>
+                    </ul>
+                    <a class="project-card__link" href="https://github.com/natamun/ICRogue" target="_blank"
+                        rel="noopener noreferrer">Voir le code →</a>
+                </article>
+
+                <article class="project-card">
+                    <h3 class="project-card__title">Codec d'image (format QOI)</h3>
+                    <p class="project-card__text">
+                        Encodeur/décodeur bas niveau pour le format d'image sans perte QOI, manipulant
+                        opérateurs bit à bit, arithmétique modulaire et tables de hachage.
+                    </p>
+                    <ul class="tag-list">
+                        <li class="tag">Java</li>
+                        <li class="tag">Opérations binaires</li>
+                        <li class="tag">Tables de hachage</li>
+                        <li class="tag">POO</li>
+                    </ul>
+                    <a class="project-card__link" href="https://github.com/natamun/qoi-codec" target="_blank"
+                        rel="noopener noreferrer">Voir le code →</a>
+                </article>
+
+                <article class="project-card project-card--upcoming">
+                    <h3 class="project-card__title">ft_transcendence <span class="badge">Bientôt</span></h3>
+                    <p class="project-card__text">
+                        Projet final du tronc commun à 42 Lausanne, en équipe. Démarrage imminent. Cette carte
+                        sera mise à jour une fois le projet lancé.
+                    </p>
+                    <a class="project-card__link" href="https://github.com/natamun/42-ft_transcendence"
+                        target="_blank" rel="noopener noreferrer">Voir le repo →</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="stage-info" class="stage-info">
+            <h2>Stage chez 42 : ce qu'il faut savoir</h2>
+            <div class="info-grid">
+                <article class="info-card">
+                    <h3 class="info-card__title">Encadrement</h3>
+                    <p class="info-card__text">
+                        Seule exigence réelle : un maître de stage / référent présent pour encadrer l'étudiant·e.
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <h3 class="info-card__title">Suivi &amp; validation</h3>
+                    <p class="info-card__text">
+                        2 formulaires web courts remplis par le référent (mi-stage et fin de stage, ~15 min
+                        chacun). Charge administrative minimale.
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <h3 class="info-card__title">Rémunération</h3>
+                    <p class="info-card__text">
+                        Libre, aucun montant imposé. Fourchette observée chez 42 Lausanne : 1500 à 4500 CHF/mois
+                        selon le profil. Base de négociation, pas un minimum.
+                        <strong>Le stage doit être rémunéré pour être validé par 42.</strong>
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <h3 class="info-card__title">Contrat</h3>
+                    <p class="info-card__text">
+                        Un contrat de travail standard suffit, comme pour n'importe quel·le salarié·e. La
+                        convention de stage formalise l'expérience côté 42. Aucun document supplémentaire à
+                        fournir.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Contact</h2>
+            <p class="contact__text">
+                Disponible pour un stage dans le canton de Fribourg dès fin septembre 2026 (dates flexibles).
+            </p>
+            <ul class="contact__links">
+                <li><a href="mailto:munnatalino@gmail.com">Email</a></li>
+                <li><a href="https://github.com/natamun" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/natalino-munari-3096502b7/" target="_blank"
+                        rel="noopener noreferrer">LinkedIn</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Natalino Munari · <a href="https://github.com/natamun/myCvWeb" target="_blank"
+                rel="noopener noreferrer">code source</a></p>
+    </footer>
+
+    <script src="assets/js/main.js" defer></script>
 </body>
 
 </html>
