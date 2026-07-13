@@ -384,11 +384,15 @@ section {
 
 /* ---------- About ---------- */
 .about p {
-    font-size: var(--fs-lg);
+    font-size: var(--fs-base);
     color: var(--text-muted);
     line-height: 1.7;
     text-align: justify;
     text-align-last: left;
+}
+
+.about p+p {
+    margin-top: var(--space-4);
 }
 
 /* ---------- Parcours ---------- */
@@ -474,4 +478,291 @@ section {
 .job__tasks li {
     list-style: disc;
     margin-bottom: var(--space-1);
+}
+
+/* ---------- Icon sprite ---------- */
+.icon-sprite {
+    display: none;
+}
+
+/* ---------- Compétences ---------- */
+.skills__group+.skills__group {
+    padding-top: var(--space-4);
+    border-top: 1px dashed var(--border);
+}
+
+.skills__group-title {
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    margin-bottom: var(--space-2);
+}
+
+.skills__group-prompt {
+    color: var(--text-muted);
+}
+
+.skills__group-var {
+    color: var(--accent);
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--text);
+    transition: border-color var(--transition), color var(--transition), box-shadow var(--transition);
+}
+
+.tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 0 12px rgba(34, 211, 238, 0.25);
+}
+
+.tag__icon {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+/* ---------- Projets ---------- */
+.projects__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-5);
+}
+
+.project-card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-4);
+    transition: border-color var(--transition);
+}
+
+.project-card:hover,
+.project-card:focus-within {
+    border-color: var(--accent);
+    z-index: 10;
+}
+
+.project-card::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: var(--space-2);
+}
+
+.project-card--upcoming {
+    background: transparent;
+    border-style: dashed;
+}
+
+.project-card .tag {
+    background: var(--bg);
+}
+
+.project-card__row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.project-card__media {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-card__media img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.project-card__media--invert img {
+    filter: invert(1);
+}
+
+.project-card__title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--fs-base);
+    flex-grow: 1;
+}
+
+.badge {
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    padding: 0.15rem var(--space-2);
+    border: 1px solid var(--accent-secondary);
+    border-radius: var(--radius-sm);
+    color: var(--accent-secondary);
+}
+
+.project-card__details {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + var(--space-2));
+    background: var(--surface);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity var(--transition), transform var(--transition);
+    z-index: 20;
+}
+
+.project-card:hover .project-card__details,
+.project-card:focus-within .project-card__details {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.project-card__text {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: var(--space-3);
+}
+
+.project-card__link {
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    color: var(--accent);
+    transition: color var(--transition);
+}
+
+.project-card__link:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+}
+
+/* ---------- Stage 42 (FAQ) ---------- */
+.faq-item+.faq-item {
+    margin-top: var(--space-4);
+    padding-top: var(--space-4);
+    border-top: 1px dashed var(--border);
+}
+
+.faq-item__q {
+    font-size: var(--fs-base);
+    color: var(--accent);
+    margin-bottom: var(--space-2);
+}
+
+.faq-item__a {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.stage-info__more {
+    margin-top: var(--space-5);
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+}
+
+.stage-info__more a {
+    color: var(--accent);
+    transition: color var(--transition);
+}
+
+.stage-info__more a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+}
+
+/* ---------- Footer / Contact ---------- */
+.site-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    max-width: 960px;
+    margin: 0 auto;
+    padding: var(--space-7) var(--space-4) var(--space-6);
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+
+.site-footer__text {
+    width: 100%;
+    max-width: 912px;
+    color: var(--text-muted);
+}
+
+.site-footer__links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
+.site-footer__links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--text);
+    transition: border-color var(--transition), color var(--transition);
+}
+
+.site-footer__links a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.site-footer__icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.site-footer__at {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    font-family: var(--font-sans);
+    font-size: var(--fs-lg);
+    font-weight: 600;
+    line-height: 1;
+    position: relative;
+    bottom: 2px;
+}
+
+.site-footer__credit {
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
 }
