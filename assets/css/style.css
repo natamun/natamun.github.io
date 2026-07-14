@@ -32,7 +32,26 @@
     --shadow-float:
         0 0 10px 4px color-mix(in srgb, var(--bg) 55%, transparent),
         0 10px 20px rgba(0, 0, 0, 0.55);
+    --shadow-pill: 0 2px 8px rgba(0, 0, 0, 0.4);
     --transition: 200ms ease;
+
+    --timeline-line-width: 2px;
+    --timeline-node-size: 10px;
+    --timeline-connector-height: 2px;
+    --timeline-indent: var(--space-6);
+    --timeline-card-padding-y: var(--space-3);
+    --timeline-line-center-x: calc(-1 * var(--timeline-indent) + (var(--timeline-line-width) / 2));
+    --timeline-card-anchor-y: calc(var(--timeline-card-padding-y) + (var(--fs-lg) * 1.2 / 2));
+    --timeline-pill-offset-x: -8px;
+    --timeline-pill-offset-y: -9px;
+
+    --timeline-node-duration: 0.8s;
+    --timeline-connector-delay: var(--timeline-node-duration);
+    --timeline-connector-duration: 0.15s;
+    --timeline-card-delay: calc(var(--timeline-connector-delay) + var(--timeline-connector-duration) + 50ms);
+    --timeline-card-duration: 0.4s;
+    --timeline-pill-delay: calc(var(--timeline-card-delay) + 500ms);
+    --timeline-pill-duration: 0.8s;
 
     --icon-size: 20px;
     --tap-target: 44px;
@@ -755,12 +774,22 @@ section {
 }
 
 .timeline {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: var(--space-6);
     margin-left: var(--space-2);
-    padding-left: var(--space-6);
-    border-left: 2px solid var(--border);
+    padding-left: var(--timeline-indent);
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: var(--timeline-line-width);
+    height: 100%;
+    background: linear-gradient(to bottom, var(--border) 0%, var(--border) 85%, transparent 100%);
 }
 
 .timeline__item {
@@ -770,53 +799,157 @@ section {
 .timeline__item::before {
     content: "";
     position: absolute;
-    left: calc(-1 * var(--space-6) - 5px);
-    top: 6px;
-    width: 10px;
-    height: 10px;
+    left: calc(var(--timeline-line-center-x) - (var(--timeline-node-size) / 2));
+    top: calc(var(--timeline-card-anchor-y) - (var(--timeline-node-size) / 2));
+    width: var(--timeline-node-size);
+    height: var(--timeline-node-size);
     border-radius: 50%;
     background: var(--accent);
-    box-shadow: 0 0 0 4px var(--bg);
+    box-shadow: 0 0 0 2px var(--bg), 0 0 8px 1px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+.timeline__connector {
+    position: absolute;
+    left: calc(var(--timeline-line-center-x) + (var(--timeline-node-size) / 2));
+    top: calc(var(--timeline-card-anchor-y) - (var(--timeline-connector-height) / 2));
+    width: var(--space-4);
+    height: var(--timeline-connector-height);
+    background: var(--accent);
+    transform-origin: left;
+}
+
+.timeline__card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--timeline-card-padding-y) var(--space-4);
+    box-shadow: var(--shadow-float);
+    transform-origin: left center;
+}
+
+.timeline__card-glow {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(circle at 0% 50%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 60%);
+}
+
+.timeline__card-year {
+    position: absolute;
+    top: var(--timeline-pill-offset-y);
+    right: var(--timeline-pill-offset-x);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-pill);
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    line-height: 1.3;
+}
+
+.timeline__item.is-observing::before {
+    transform: scale(0);
+}
+
+.timeline__item.is-observing .timeline__connector {
+    transform: scaleX(0);
+}
+
+.timeline__item.is-observing .timeline__card {
+    transform: scale(0.15);
+    opacity: 0;
+}
+
+.timeline__item.is-observing .timeline__card-year {
+    transform: scale(0.5);
+    opacity: 0;
+}
+
+.timeline__item.is-visible::before {
+    animation: timelineNodePop var(--timeline-node-duration) cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.timeline__item.is-visible .timeline__connector {
+    animation: timelineConnectorDraw var(--timeline-connector-duration) linear both;
+    animation-delay: var(--timeline-connector-delay);
+}
+
+.timeline__item.is-visible .timeline__card {
+    animation: timelineCardSpawn var(--timeline-card-duration) cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation-delay: var(--timeline-card-delay);
+}
+
+.timeline__item.is-visible .timeline__card-year {
+    animation: timelinePillPop var(--timeline-pill-duration) ease both;
+    animation-delay: var(--timeline-pill-delay);
+}
+
+@keyframes timelineNodePop {
+    0% {
+        transform: scale(0);
+    }
+
+    60% {
+        transform: scale(1.4);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes timelineConnectorDraw {
+    0% {
+        transform: scaleX(0);
+    }
+
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes timelineCardSpawn {
+    0% {
+        transform: scale(0.15);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes timelinePillPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .timeline__title {
-    margin-bottom: var(--space-2);
-}
-
-.timeline__title a {
-    color: var(--accent);
-    transition: color var(--transition);
-}
-
-.timeline__title a:hover {
-    color: var(--accent-hover);
-    text-decoration: underline;
-}
-
-.timeline__text {
-    color: var(--text-muted);
-    max-width: 600px;
-}
-
-.job-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-    margin-top: var(--space-3);
-}
-
-.job {
-    padding-left: var(--space-3);
-    border-left: 2px solid var(--border);
-}
-
-.job__title {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
     gap: var(--space-2);
-    font-size: var(--fs-base);
-    color: var(--text);
+    margin-bottom: var(--space-2);
+    padding-right: var(--space-6);
 }
 
 .job__meta {

@@ -21,6 +21,7 @@ initHeroGlyphs();
 typeTerminal();
 initEmailCopy();
 initAboutReveal();
+initParcoursReveal();
 
 function typeTerminal() {
     const terminal = document.querySelector('.hero__terminal');
@@ -106,14 +107,11 @@ function typeTerminal() {
             line.textContent = '';
         });
 
-        terminal.classList.add('is-typing');
-
         let lineIndex = 0;
         let charIndex = 0;
 
         const typeNext = () => {
             if (lineIndex >= lines.length) {
-                terminal.classList.remove('is-typing');
                 terminal.style.minHeight = '';
                 terminal.style.width = '';
                 return;
@@ -299,5 +297,29 @@ function initAboutReveal() {
     }, { threshold: REVEAL_THRESHOLD });
 
     observer.observe(about);
+}
+
+function initParcoursReveal() {
+    const items = document.querySelectorAll('.timeline__item');
+    if (!items.length) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const REVEAL_THRESHOLD = 0.3;
+
+    items.forEach((item) => item.classList.add('is-observing'));
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            entry.target.classList.remove('is-observing');
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+        });
+    }, { threshold: REVEAL_THRESHOLD });
+
+    items.forEach((item) => observer.observe(item));
 }
 
