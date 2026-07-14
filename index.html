@@ -14,6 +14,11 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+    </script>
 </head>
 
 <body>
@@ -108,26 +113,64 @@
         <section id="hero" class="hero">
             <div class="hero__glyphs" aria-hidden="true"></div>
 
-            <div class="hero__avatar">
-                <img src="assets/img/nmunari.jpg" alt="Photo de Natalino Munari">
-            </div>
+            <div class="hero__stack">
+                <div class="hero__intro">
+                    <h1 class="hero__title">Natalino Munari</h1>
+                    <p class="hero__subtitle">Étudiant informatique · 42 Lausanne</p>
+                </div>
 
-            <div class="hero__terminal">
-                <p>$ whoami</p>
-                <p>&gt; Natalino MUNARI</p>
-                <p>$ age</p>
-                <p>&gt; 25 ans</p>
-                <p>$ role</p>
-                <p>&gt; Étudiant à 42 Lausanne</p>
-                <p>$ status</p>
-                <p>&gt; Disponible pour un stage dès fin septembre 2026</p>
-                <p>$ location</p>
-                <p>&gt; Fribourg / Bulle, Suisse</p>
-            </div>
+                <div class="hero__row">
+                    <div class="hero__content">
+                        <div class="hero__terminal">
+                            <p>$ uptime</p>
+                            <p>&gt; 25 ans</p>
+                            <p>$ ls ./skills</p>
+                            <p>&gt; C  C++  Java  ...</p>
+                            <p>$ status</p>
+                            <p>&gt; Disponible pour un stage dès fin septembre 2026</p>
+                            <p>$ location</p>
+                            <p>&gt; Fribourg / Bulle, Suisse</p>
+                        </div>
 
-            <div class="hero__cta">
-                <a class="btn btn--primary" href="#projects">Voir mes projets</a>
-                <a class="btn btn--secondary" href="#contact">Me contacter</a>
+                        <div class="hero__cta">
+                            <a class="btn btn--primary" href="#projects">Voir mes projets</a>
+                            <a class="btn btn--secondary" href="#contact">Me contacter</a>
+                        </div>
+                    </div>
+
+                    <div class="hero__avatar">
+                        <div class="hero__avatar-frame">
+                            <img src="assets/img/nmunari.jpg" alt="Photo de Natalino Munari">
+                        </div>
+                        <ul class="hero__avatar-badges">
+                            <li style="top: 76.9%; left: 92.2%;">
+                                <a href="mailto:munnatalino@gmail.com" aria-label="Email">
+                                    <span class="hero__avatar-badge-at" aria-hidden="true">@</span>
+                                </a>
+                            </li>
+                            <li style="top: 58.7%; left: 0.8%;">
+                                <a href="https://github.com/natamun" target="_blank" rel="noopener noreferrer"
+                                    aria-label="GitHub">
+                                    <svg class="hero__avatar-badge-icon" aria-hidden="true">
+                                        <use href="#i-github"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li style="top: 10.3%; left: 80.4%;">
+                                <a href="https://www.linkedin.com/in/natalino-munari" target="_blank"
+                                    rel="noopener noreferrer" aria-label="LinkedIn">
+                                    <svg class="hero__avatar-badge-icon" viewBox="0 0 128 128" aria-hidden="true">
+                                        <use href="#i-linkedin"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="hero__actions">
+                    <a class="btn btn--primary" href="#projects">Voir mes projets</a>
+                </div>
             </div>
         </section>
 
@@ -513,7 +556,7 @@
                         <use href="#i-github"></use>
                     </svg>
                 </a></li>
-            <li><a href="https://www.linkedin.com/in/natalino-munari-3096502b7/" target="_blank"
+            <li><a href="https://www.linkedin.com/in/natalino-munari" target="_blank"
                     rel="noopener noreferrer" aria-label="LinkedIn">
                     <svg class="site-footer__icon" viewBox="0 0 128 128" aria-hidden="true">
                         <use href="#i-linkedin"></use>

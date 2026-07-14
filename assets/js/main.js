@@ -18,6 +18,151 @@ navLinks.querySelectorAll('a').forEach((link) => {
 });
 
 initHeroGlyphs();
+typeTerminal();
+
+function typeTerminal() {
+    const terminal = document.querySelector('.hero__terminal');
+    if (!terminal) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const start = () => {
+        const CHAR_DELAY_RANGE = [50, 100];
+        const CHAR_DELAY_STEP = 10;
+        const LINE_DELAY = 120;
+        const BACKSPACE_DELAY = 100;
+        const TYPO_LINE = '$ locaation';
+        const TYPO_MISTAKE_PAUSE = 100;
+        const TYPO_ERROR_PAUSE = 1000;
+
+        const randomCharDelay = () => {
+            const [min, max] = CHAR_DELAY_RANGE;
+            const steps = Math.floor((max - min) / CHAR_DELAY_STEP);
+            return min + Math.floor(Math.random() * (steps + 1)) * CHAR_DELAY_STEP;
+        };
+
+        const typeChars = (line, text, fromIndex, onDone) => {
+            let i = fromIndex;
+            const step = () => {
+                if (i >= text.length) {
+                    onDone();
+                    return;
+                }
+                line.textContent += text[i];
+                i++;
+                setTimeout(step, randomCharDelay());
+            };
+            step();
+        };
+
+        const eraseChars = (line, toLength, onDone) => {
+            const step = () => {
+                if (line.textContent.length <= toLength) {
+                    onDone();
+                    return;
+                }
+                line.textContent = line.textContent.slice(0, -1);
+                setTimeout(step, BACKSPACE_DELAY);
+            };
+            step();
+        };
+
+        const typeLocationTypo = (line, correctText, errorLine, onDone) => {
+            let prefixLength = 0;
+            while (
+                prefixLength < TYPO_LINE.length &&
+                prefixLength < correctText.length &&
+                TYPO_LINE[prefixLength] === correctText[prefixLength]
+            ) {
+                prefixLength++;
+            }
+
+            typeChars(line, TYPO_LINE, 0, () => {
+                setTimeout(() => {
+                    errorLine.classList.add('hero__terminal-error');
+                    errorLine.textContent = `> bash: ${TYPO_LINE.replace('$ ', '')}: command not found`;
+
+                    setTimeout(() => {
+                        errorLine.textContent = '';
+                        errorLine.classList.remove('hero__terminal-error');
+                        eraseChars(line, prefixLength, () => {
+                            typeChars(line, correctText, prefixLength, onDone);
+                        });
+                    }, TYPO_ERROR_PAUSE);
+                }, TYPO_MISTAKE_PAUSE);
+            });
+        };
+
+        const lines = [...terminal.querySelectorAll('p')];
+        const originals = lines.map((line) => line.textContent);
+
+        terminal.style.minHeight = `${terminal.offsetHeight}px`;
+        terminal.style.width = `${terminal.offsetWidth}px`;
+
+        lines.forEach((line) => {
+            line.textContent = '';
+        });
+
+        terminal.classList.add('is-typing');
+
+        let lineIndex = 0;
+        let charIndex = 0;
+
+        const typeNext = () => {
+            if (lineIndex >= lines.length) {
+                terminal.classList.remove('is-typing');
+                terminal.style.minHeight = '';
+                terminal.style.width = '';
+                return;
+            }
+
+            const text = originals[lineIndex];
+            const line = lines[lineIndex];
+
+            if (!text.startsWith('$')) {
+                line.textContent = text;
+                lineIndex++;
+                charIndex = 0;
+                setTimeout(typeNext, LINE_DELAY);
+                return;
+            }
+
+            if (charIndex === 0) {
+                line.classList.add('is-active');
+
+                if (text === '$ location' && lines[lineIndex + 1]) {
+                    typeLocationTypo(line, text, lines[lineIndex + 1], () => {
+                        line.classList.remove('is-active');
+                        lineIndex++;
+                        charIndex = 0;
+                        setTimeout(typeNext, LINE_DELAY);
+                    });
+                    return;
+                }
+            }
+
+            if (charIndex < text.length) {
+                line.textContent += text[charIndex];
+                charIndex++;
+                setTimeout(typeNext, randomCharDelay());
+            } else {
+                line.classList.remove('is-active');
+                lineIndex++;
+                charIndex = 0;
+                setTimeout(typeNext, LINE_DELAY);
+            }
+        };
+
+        typeNext();
+    };
+
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(start);
+    } else {
+        start();
+    }
+}
 
 function initHeroGlyphs() {
     const container = document.querySelector('.hero__glyphs');
