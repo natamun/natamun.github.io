@@ -77,6 +77,41 @@
                 <path
                     d="M116 3H12a8.91 8.91 0 00-9 8.8v104.42a8.91 8.91 0 009 8.78h104a8.93 8.93 0 009-8.81V11.77A8.93 8.93 0 00116 3zM39.17 107H21.06V48.73h18.11zm-9-66.21a10.5 10.5 0 1110.49-10.5 10.5 10.5 0 01-10.54 10.48zM107 107H88.89V78.65c0-6.75-.12-15.44-9.41-15.44s-10.87 7.36-10.87 15V107H50.53V48.73h17.36v8h.24c2.42-4.58 8.32-9.41 17.13-9.41C103.6 47.28 107 59.35 107 75z" />
             </symbol>
+            <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+            </symbol>
+            <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                <rect width="20" height="14" x="2" y="6" rx="2" />
+            </symbol>
+            <symbol id="i-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+            </symbol>
+            <symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+                <path
+                    d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+                <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+                <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+            </symbol>
+            <symbol id="i-help-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+            </symbol>
+            <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+            </symbol>
         </defs>
     </svg>
 
@@ -98,12 +133,24 @@
             </button>
 
             <ul class="nav__links" id="nav-links">
-                <li><a href="#about">À propos</a></li>
-                <li><a href="#parcours">Parcours</a></li>
-                <li><a href="#skills">Compétences</a></li>
-                <li><a href="#projects">Projets</a></li>
-                <li><a href="#stage-info">Stage 42</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about"><svg class="nav__link-icon" aria-hidden="true">
+                            <use href="#i-user"></use>
+                        </svg> À propos</a></li>
+                <li><a href="#parcours"><svg class="nav__link-icon" aria-hidden="true">
+                            <use href="#i-briefcase"></use>
+                        </svg> Parcours</a></li>
+                <li><a href="#skills"><svg class="nav__link-icon" aria-hidden="true">
+                            <use href="#i-wrench"></use>
+                        </svg> Compétences</a></li>
+                <li><a href="#projects"><svg class="nav__link-icon" aria-hidden="true">
+                            <use href="#i-rocket"></use>
+                        </svg> Projets</a></li>
+                <li><a href="#stage-info"><svg class="nav__link-icon" aria-hidden="true">
+                            <use href="#i-help-circle"></use>
+                        </svg> Stage 42</a></li>
+                <li><a href="#contact"><svg class="nav__link-icon" aria-hidden="true">
+                            <use href="#i-mail"></use>
+                        </svg> Contact</a></li>
             </ul>
 
             <button class="nav__lang-toggle" type="button" aria-label="Changer de langue">FR / EN</button>
@@ -177,7 +224,7 @@
 
         <section id="about" class="about">
             <h2>À propos de moi</h2>
-            <p>
+            <p class="about__text">
                 Depuis tout petit, j'aime l'informatique et la tech. Après une maturité gymnasiale au Collège de
                 Gambach, je suis passé par l'EPFL puis la HEIA-FR, deux pistes très scolaires qui ne m'ont
                 finalement pas plu : je n'avais juste pas trouvé le bon chemin pour exprimer ma passion. C'est
@@ -185,13 +232,13 @@
                 et par les pairs, en totale autonomie, une pédagogie qui matche totalement ma façon de penser.
                 Et j'adore ça.
             </p>
-            <p>
+            <p class="about__text">
                 Pour gagner en indépendance, j'ai aussi enchaîné plusieurs emplois depuis 2016 : au restaurant
                 L'Unique à La Roche, régulièrement chaque été selon ma disponibilité, puis à temps plein au
                 McDonald's d'Avry entre 2021 et 2023 et à la base de distribution de Givisiez de La Poste durant
                 l'année 2024. Maintenant je me consacre surtout à mon apprentissage dans l'IT.
             </p>
-            <p>
+            <p class="about__text">
                 En dehors du code, mon travail en restauration m'a donné une vraie passion pour la cuisine, que
                 je préfère garder comme passion plutôt qu'en faire mon métier. J'aime aussi les jeux vidéo
                 compétitifs, la plongée (certifié Open Water depuis 2019), la musique, le voyage et le fitness.

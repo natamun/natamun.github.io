@@ -20,6 +20,7 @@ navLinks.querySelectorAll('a').forEach((link) => {
 initHeroGlyphs();
 typeTerminal();
 initEmailCopy();
+initAboutReveal();
 
 function typeTerminal() {
     const terminal = document.querySelector('.hero__terminal');
@@ -275,3 +276,28 @@ function initEmailCopy() {
         });
     });
 }
+
+function initAboutReveal() {
+    const about = document.querySelector('.about');
+    if (!about) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const REVEAL_THRESHOLD = 0.3;
+
+    about.classList.add('is-observing');
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            about.classList.remove('is-observing');
+            about.classList.add('is-visible');
+            obs.unobserve(about);
+        });
+    }, { threshold: REVEAL_THRESHOLD });
+
+    observer.observe(about);
+}
+

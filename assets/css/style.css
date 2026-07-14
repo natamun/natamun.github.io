@@ -209,6 +209,9 @@ section {
 
 .nav__links a {
     position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
     padding: var(--space-1) 0;
     color: var(--text-muted);
     transition: color var(--transition);
@@ -216,6 +219,12 @@ section {
 
 .nav__links a:hover {
     color: var(--text);
+}
+
+.nav__link-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
 }
 
 .nav__links a::after {
@@ -710,6 +719,39 @@ section {
 
 .about p+p {
     margin-top: var(--space-4);
+}
+
+.about.is-observing .about__text {
+    opacity: 0;
+    filter: blur(1px);
+}
+
+.about.is-visible .about__text {
+    animation: aboutRevealBlur 0.7s ease-out both;
+}
+
+.about.is-visible .about__text:nth-of-type(1) {
+    animation-delay: 200ms;
+}
+
+.about.is-visible .about__text:nth-of-type(2) {
+    animation-delay: 400ms;
+}
+
+.about.is-visible .about__text:nth-of-type(3) {
+    animation-delay: 600ms;
+}
+
+@keyframes aboutRevealBlur {
+    from {
+        opacity: 0;
+        filter: blur(1px);
+    }
+
+    to {
+        opacity: 1;
+        filter: blur(0);
+    }
 }
 
 .timeline {
