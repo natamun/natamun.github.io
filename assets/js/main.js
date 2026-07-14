@@ -22,6 +22,7 @@ typeTerminal();
 initEmailCopy();
 initAboutReveal();
 initParcoursReveal();
+initSkillsReveal();
 
 function typeTerminal() {
   const terminal = document.querySelector('.hero__terminal');
@@ -343,4 +344,34 @@ function initParcoursReveal() {
   }, { threshold: REVEAL_THRESHOLD });
 
   items.forEach((item) => observer.observe(item));
+}
+
+function initSkillsReveal() {
+  const skills = document.querySelector('.skills');
+  if (!skills) {
+    return;
+  }
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) {
+    return;
+  }
+
+  const REVEAL_THRESHOLD = 0.3;
+
+  skills.classList.add('is-observing');
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        return;
+      }
+
+      skills.classList.remove('is-observing');
+      skills.classList.add('is-visible');
+      obs.unobserve(skills);
+    });
+  }, { threshold: REVEAL_THRESHOLD });
+
+  observer.observe(skills);
 }

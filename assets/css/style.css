@@ -53,6 +53,14 @@
   --timeline-pill-delay: calc(var(--timeline-card-delay) + 500ms);
   --timeline-pill-duration: 0.8s;
 
+  --skills-group-stagger: 180ms;
+  --skills-title-duration: 260ms;
+  --skills-rule-delay: var(--skills-title-duration);
+  --skills-rule-duration: 280ms;
+  --skills-chip-delay: calc(var(--skills-rule-delay) + var(--skills-rule-duration));
+  --skills-chip-duration: 240ms;
+  --skills-chip-stagger: 45ms;
+
   --icon-size: 20px;
   --tap-target: 44px;
   --grid-cell: 48px;
@@ -975,24 +983,125 @@ section {
   display: none;
 }
 
-.skills__group+.skills__group {
-  padding-top: var(--space-4);
-  border-top: 1px dashed var(--border);
+.skills__groups {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5);
+}
+
+@media (max-width: 640px) {
+  .skills__groups {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skills__group:nth-of-type(1) {
+  --group-i: 0;
+}
+
+.skills__group:nth-of-type(2) {
+  --group-i: 1;
+}
+
+.skills__group:nth-of-type(3) {
+  --group-i: 2;
+  grid-column: 1 / -1;
 }
 
 .skills__group-title {
   font-family: var(--font-mono);
   font-size: var(--fs-sm);
-  font-weight: 500;
-  margin-bottom: var(--space-2);
-}
-
-.skills__group-prompt {
-  color: var(--text-muted);
-}
-
-.skills__group-var {
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   color: var(--accent);
+}
+
+.skills__group-rule {
+  display: block;
+  height: 1px;
+  margin: var(--space-2) 0 var(--space-3);
+  background: var(--accent);
+  transform-origin: left;
+}
+
+.skills.is-observing .skills__group-title {
+  opacity: 0;
+}
+
+.skills.is-observing .skills__group-rule {
+  transform: scaleX(0);
+}
+
+.skills.is-observing .tag {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+.skills.is-visible .skills__group-title {
+  animation: skillsTitleIn var(--skills-title-duration) ease both;
+  animation-delay: calc(var(--group-i) * var(--skills-group-stagger));
+}
+
+.skills.is-visible .skills__group-rule {
+  animation: skillsRuleDraw var(--skills-rule-duration) ease both;
+  animation-delay: calc(var(--group-i) * var(--skills-group-stagger) + var(--skills-rule-delay));
+}
+
+.skills.is-visible .tag {
+  animation: skillsChipIn var(--skills-chip-duration) ease both;
+}
+
+.skills.is-visible .tag-list .tag:nth-child(1) {
+  animation-delay: calc(var(--group-i) * var(--skills-group-stagger) + var(--skills-chip-delay) + var(--skills-chip-stagger) * 0);
+}
+
+.skills.is-visible .tag-list .tag:nth-child(2) {
+  animation-delay: calc(var(--group-i) * var(--skills-group-stagger) + var(--skills-chip-delay) + var(--skills-chip-stagger) * 1);
+}
+
+.skills.is-visible .tag-list .tag:nth-child(3) {
+  animation-delay: calc(var(--group-i) * var(--skills-group-stagger) + var(--skills-chip-delay) + var(--skills-chip-stagger) * 2);
+}
+
+.skills.is-visible .tag-list .tag:nth-child(4) {
+  animation-delay: calc(var(--group-i) * var(--skills-group-stagger) + var(--skills-chip-delay) + var(--skills-chip-stagger) * 3);
+}
+
+.skills.is-visible .tag-list .tag:nth-child(5) {
+  animation-delay: calc(var(--group-i) * var(--skills-group-stagger) + var(--skills-chip-delay) + var(--skills-chip-stagger) * 4);
+}
+
+@keyframes skillsTitleIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes skillsRuleDraw {
+  0% {
+    transform: scaleX(0);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes skillsChipIn {
+  0% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .tag-list {
