@@ -19,6 +19,7 @@ navLinks.querySelectorAll('a').forEach((link) => {
 
 initHeroGlyphs();
 typeTerminal();
+initEmailCopy();
 
 function typeTerminal() {
     const terminal = document.querySelector('.hero__terminal');
@@ -236,4 +237,41 @@ function initHeroGlyphs() {
 
     const pool = Array(DENSITY).fill(CHARS).flat().sort(() => Math.random() - 0.5);
     pool.forEach((char) => container.appendChild(createGlyph(char)));
+}
+
+function initEmailCopy() {
+    const links = document.querySelectorAll('.js-copy-email');
+    if (!links.length) return;
+
+    const TOAST_DURATION = 2000;
+
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
+    document.body.appendChild(toast);
+
+    let toastTimeout;
+
+    const showToast = (message) => {
+        clearTimeout(toastTimeout);
+        toast.textContent = message;
+        toast.classList.add('is-visible');
+        toastTimeout = setTimeout(() => toast.classList.remove('is-visible'), TOAST_DURATION);
+    };
+
+    links.forEach((link) => {
+        link.addEventListener('click', (event) => {
+            if (!navigator.clipboard) return;
+
+            event.preventDefault();
+            const email = link.href.replace('mailto:', '');
+
+            navigator.clipboard.writeText(email)
+                .then(() => showToast('Email copié !'))
+                .catch(() => {
+                    window.location.href = link.href;
+                });
+        });
+    });
 }

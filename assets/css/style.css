@@ -1067,3 +1067,27 @@ section {
     font-size: var(--fs-sm);
     color: var(--text-muted);
 }
+
+.toast {
+    position: fixed;
+    bottom: var(--space-5);
+    left: 50%;
+    z-index: 200;
+    transform: translate(-50%, 10px);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-float);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition), transform var(--transition);
+}
+
+.toast.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
