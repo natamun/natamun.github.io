@@ -32,7 +32,7 @@ function typeTerminal() {
         const CHAR_DELAY_STEP = 10;
         const LINE_DELAY = 120;
         const BACKSPACE_DELAY = 100;
-        const TYPO_LINE = '$ locaation';
+        const TYPO_LINE = '$ whereaami';
         const TYPO_MISTAKE_PAUSE = 100;
         const TYPO_ERROR_PAUSE = 1000;
 
@@ -131,7 +131,7 @@ function typeTerminal() {
             if (charIndex === 0) {
                 line.classList.add('is-active');
 
-                if (text === '$ location' && lines[lineIndex + 1]) {
+                if (text === '$ whereami' && lines[lineIndex + 1]) {
                     typeLocationTypo(line, text, lines[lineIndex + 1], () => {
                         line.classList.remove('is-active');
                         lineIndex++;
