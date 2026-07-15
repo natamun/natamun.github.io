@@ -1,4 +1,4 @@
-document.querySelectorAll('.project-card__link').forEach((link) => {
+document.querySelectorAll('.unit__detail-link').forEach((link) => {
   link.addEventListener('click', () => link.blur());
 });
 
@@ -23,6 +23,7 @@ initEmailCopy();
 initAboutReveal();
 initParcoursReveal();
 initSkillsReveal();
+initProjectsReveal();
 
 function typeTerminal() {
   const terminal = document.querySelector('.hero__terminal');
@@ -374,4 +375,34 @@ function initSkillsReveal() {
   }, { threshold: REVEAL_THRESHOLD });
 
   observer.observe(skills);
+}
+
+function initProjectsReveal() {
+  const stage = document.querySelector('.projects__stage');
+  if (!stage) {
+    return;
+  }
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) {
+    return;
+  }
+
+  const REVEAL_THRESHOLD = 0.3;
+
+  stage.classList.add('is-observing');
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        return;
+      }
+
+      stage.classList.remove('is-observing');
+      stage.classList.add('is-visible');
+      obs.unobserve(stage);
+    });
+  }, { threshold: REVEAL_THRESHOLD });
+
+  observer.observe(stage);
 }
