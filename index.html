@@ -131,27 +131,25 @@
       </button>
 
       <ul class="nav__links" id="nav-links">
-        <li><a href="#about"><svg class="nav__link-icon" aria-hidden="true">
+        <li><a href="#about" aria-label="À propos"><svg class="nav__link-icon" aria-hidden="true">
               <use href="#i-user"></use>
-            </svg> À propos</a></li>
-        <li><a href="#parcours"><svg class="nav__link-icon" aria-hidden="true">
+            </svg> <span class="nav__link-text">À propos</span></a></li>
+        <li><a href="#parcours" aria-label="Parcours"><svg class="nav__link-icon" aria-hidden="true">
               <use href="#i-briefcase"></use>
-            </svg> Parcours</a></li>
-        <li><a href="#skills"><svg class="nav__link-icon" aria-hidden="true">
+            </svg> <span class="nav__link-text">Parcours</span></a></li>
+        <li><a href="#skills" aria-label="Compétences"><svg class="nav__link-icon" aria-hidden="true">
               <use href="#i-wrench"></use>
-            </svg> Compétences</a></li>
-        <li><a href="#projects"><svg class="nav__link-icon" aria-hidden="true">
+            </svg> <span class="nav__link-text">Compétences</span></a></li>
+        <li><a href="#projects" aria-label="Projets"><svg class="nav__link-icon" aria-hidden="true">
               <use href="#i-rocket"></use>
-            </svg> Projets</a></li>
-        <li><a href="#stage-info"><svg class="nav__link-icon" aria-hidden="true">
+            </svg> <span class="nav__link-text">Projets</span></a></li>
+        <li><a href="#stage-info" aria-label="Stage 42"><svg class="nav__link-icon" aria-hidden="true">
               <use href="#i-help-circle"></use>
-            </svg> Stage 42</a></li>
-        <li><a href="#contact"><svg class="nav__link-icon" aria-hidden="true">
+            </svg> <span class="nav__link-text">Stage 42</span></a></li>
+        <li><a href="#contact" aria-label="Contact"><svg class="nav__link-icon" aria-hidden="true">
               <use href="#i-mail"></use>
-            </svg> Contact</a></li>
+            </svg> <span class="nav__link-text">Contact</span></a></li>
       </ul>
-
-      <button class="nav__lang-toggle" type="button" aria-label="Changer de langue">FR / EN</button>
     </nav>
   </header>
 
@@ -336,7 +334,6 @@
             <li class="tag"><svg class="tag__icon" viewBox="0 0 128 128" aria-hidden="true">
                 <use href="#i-java"></use>
               </svg>Java</li>
-            <!-- TODO: compléter/vérifier la liste réelle -->
           </ul>
         </div>
 
@@ -353,7 +350,6 @@
             <li class="tag"><svg class="tag__icon" aria-hidden="true">
                 <use href="#i-php"></use>
               </svg>PHP</li>
-            <!-- TODO: ajouter la stack de Transcendance une fois commencé -->
           </ul>
         </div>
 
@@ -386,7 +382,7 @@
 
       <div class="projects__stage">
         <div class="unit unit--l" style="left: 45%; top: 72%; --delay: 0ms;">
-          <div class="unit__bubble">
+          <div class="unit__bubble" tabindex="0" role="button" aria-expanded="false">
             <span class="unit__visual">
               <span class="unit__hex"></span>
               <img class="unit__img" src="assets/img/webservn.png" alt="" width="150" height="150" loading="lazy">
@@ -412,7 +408,7 @@
         </div>
 
         <div class="unit unit--m" style="left: 33%; top: 20%; --delay: 120ms;">
-          <div class="unit__bubble">
+          <div class="unit__bubble" tabindex="0" role="button" aria-expanded="false">
             <span class="unit__visual">
               <span class="unit__hex"></span>
               <img class="unit__img" src="assets/img/inceptionn.png" alt="" width="150" height="150" loading="lazy">
@@ -437,7 +433,7 @@
         </div>
 
         <div class="unit unit--l unit--flip-left" style="left: 67%; top: 18%; --delay: 90ms;">
-          <div class="unit__bubble">
+          <div class="unit__bubble" tabindex="0" role="button" aria-expanded="false">
             <span class="unit__visual">
               <span class="unit__hex"></span>
               <img class="unit__img" src="assets/img/minishelln.png" alt="" width="150" height="150" loading="lazy">
@@ -463,7 +459,7 @@
         </div>
 
         <div class="unit unit--s unit--flip-left" style="left: 90%; top: 36%; --delay: 210ms;">
-          <div class="unit__bubble">
+          <div class="unit__bubble" tabindex="0" role="button" aria-expanded="false">
             <span class="unit__visual">
               <span class="unit__hex"></span>
               <img class="unit__img" src="assets/img/philosophersn.png" alt="" width="150" height="150" loading="lazy">
@@ -488,7 +484,7 @@
         </div>
 
         <div class="unit unit--l unit--plate unit--plate-fill" style="left: 10%; top: 32%; --delay: 180ms;">
-          <div class="unit__bubble">
+          <div class="unit__bubble" tabindex="0" role="button" aria-expanded="false">
             <span class="unit__visual">
               <span class="unit__hex"></span>
               <span class="unit__plate"></span>
@@ -516,7 +512,7 @@
         </div>
 
         <div class="unit unit--m unit--flip-left unit--invert unit--plate" style="left: 70%; top: 82%; --delay: 300ms;">
-          <div class="unit__bubble">
+          <div class="unit__bubble" tabindex="0" role="button" aria-expanded="false">
             <span class="unit__visual">
               <span class="unit__hex"></span>
               <span class="unit__plate"></span>
@@ -541,7 +537,7 @@
         </div>
 
         <div class="unit unit--m" style="left: 20%; top: 84%; --delay: 340ms;">
-          <div class="unit__bubble">
+          <div class="unit__bubble" tabindex="0" role="button" aria-expanded="false">
             <span class="unit__visual">
               <span class="unit__hex"></span>
               <img class="unit__img" src="assets/img/ft_transcendencen.png" alt="" width="150" height="150"
