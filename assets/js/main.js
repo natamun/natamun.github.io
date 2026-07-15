@@ -17,7 +17,9 @@ navLinks.querySelectorAll('a').forEach((link) => {
   });
 });
 
-initHeroGlyphs();
+if (!window.matchMedia('(pointer: coarse)').matches) {
+  initHeroGlyphs();
+}
 typeTerminal();
 initEmailCopy();
 initRevealObserver('.about');
