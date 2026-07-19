@@ -564,6 +564,10 @@ section {
 }
 
 @media (pointer: coarse) {
+  .hero__intro {
+    padding-top: var(--space-4);
+  }
+
   .hero__glyphs {
     display: none;
   }
@@ -719,6 +723,11 @@ section {
 }
 
 @media (max-width: 800px) {
+  .hero__title {
+    display: block;
+    text-align: center;
+  }
+
   .hero__intro {
     padding-top: var(--space-4);
   }
@@ -731,7 +740,7 @@ section {
 
   .hero__avatar {
     order: -1;
-    --avatar-size: 120px;
+    --avatar-size: 200px;
   }
 
   .hero__content {
