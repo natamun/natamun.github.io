@@ -1,22 +1,5 @@
-document.querySelectorAll('.unit__detail-link').forEach((link) => {
-  link.addEventListener('click', () => link.blur());
-});
-
-const navBurger = document.querySelector('.nav__burger');
-const navLinks = document.querySelector('.nav__links');
-
-navBurger.addEventListener('click', () => {
-  const isOpen = navLinks.classList.toggle('is-open');
-  navBurger.setAttribute('aria-expanded', isOpen);
-});
-
-navLinks.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('is-open');
-    navBurger.setAttribute('aria-expanded', 'false');
-  });
-});
-
+initProjectLinkBlur();
+initNavBurger();
 if (!window.matchMedia('(pointer: coarse)').matches) {
   initHeroGlyphs();
 }
@@ -27,6 +10,29 @@ initRevealObserver('.timeline__item');
 initRevealObserver('.skills');
 initRevealObserver('.projects__stage');
 initProjectsMobileDetail();
+
+function initProjectLinkBlur() {
+  document.querySelectorAll('.unit__detail-link').forEach((link) => {
+    link.addEventListener('click', () => link.blur());
+  });
+}
+
+function initNavBurger() {
+  const navBurger = document.querySelector('.nav__burger');
+  const navLinks = document.querySelector('.nav__links');
+
+  navBurger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('is-open');
+    navBurger.setAttribute('aria-expanded', isOpen);
+  });
+
+  navLinks.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('is-open');
+      navBurger.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
 
 function typeTerminal() {
   const terminal = document.querySelector('.hero__terminal');
