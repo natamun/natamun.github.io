@@ -288,7 +288,7 @@ function initEmailCopy() {
       const email = link.href.replace('mailto:', '');
 
       navigator.clipboard.writeText(email)
-        .then(() => showToast('Email copié !'))
+        .then(() => showToast(link.dataset.copiedMessage || 'Copied!'))
         .catch(() => {
           window.location.href = link.href;
         });
