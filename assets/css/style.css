@@ -1419,6 +1419,15 @@ section {
   pointer-events: auto;
 }
 
+@media (max-width: 1080px) {
+
+  .unit:hover .unit__detail,
+  .unit:focus-within .unit__detail {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
 .unit__detail .tag-list {
   flex-wrap: nowrap;
 }
