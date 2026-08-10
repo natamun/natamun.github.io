@@ -115,8 +115,9 @@ function typeTerminal() {
     const lines = [...terminal.querySelectorAll('p')];
     const originals = lines.map((line) => line.textContent);
 
-    terminal.style.minHeight = `${terminal.offsetHeight}px`;
-    terminal.style.width = `${terminal.offsetWidth}px`;
+    const terminalRect = terminal.getBoundingClientRect();
+    terminal.style.minHeight = `${terminalRect.height}px`;
+    terminal.style.width = `${terminalRect.width}px`;
 
     lines.forEach((line) => {
       line.textContent = '';
