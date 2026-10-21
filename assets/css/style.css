@@ -1485,6 +1485,10 @@ section {
   text-decoration: underline;
 }
 
+.unit__detail-link+.unit__detail-link {
+  margin-left: var(--space-3);
+}
+
 .faq-item+.faq-item {
   margin-top: var(--space-4);
   padding-top: var(--space-4);
